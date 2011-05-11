@@ -19,6 +19,12 @@ syntax keyword soyKeyword contained in
 syntax keyword soyKeyword contained range
 syntax keyword soyKeyword contained call
 syntax keyword soyKeyword contained param
+syntax keyword soyKeyword contained nil
+syntax keyword soyKeyword contained r
+syntax keyword soyKeyword contained n
+syntax keyword soyKeyword contained t
+syntax keyword soyKeyword contained lb
+syntax keyword soyKeyword contained rb
 
 syntax keyword soyDirective contained private
 syntax keyword soyDirective contained autoescape
@@ -32,10 +38,16 @@ syntax keyword soyDirective contained desc
 syntax keyword soyDirective contained meaning
 syntax keyword soyDirective contained data
 
-syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier
+syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString
+syntax region soyString contained start="\"" end="\""
 
 syntax match soyIdentifier /\$\w\+/
+
+syntax region soyComment start=/\/\*/ end='\\*\/'
+syntax match soyComment /\/\/.*$/
 
 highlight link soyKeyword Statement
 highlight link soyDirective Type
 highlight link soyIdentifier Identifier
+highlight link soyString String
+highlight link soyComment Comment
