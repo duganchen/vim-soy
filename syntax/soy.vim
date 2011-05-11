@@ -52,16 +52,19 @@ syntax keyword soyDirective contained desc
 syntax keyword soyDirective contained meaning
 syntax keyword soyDirective contained data
 
-syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString
+syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString, soyTemplate
 syntax region soyString contained start="\"" end="\""
 
-syntax match soyIdentifier /\$\w\+/
+syntax match soyIdentifier /\$[a-zA-Z0-9._]*\>/ contained
 
 syntax region soyComment start=/\/\*/ end='\\*\/'
 syntax match soyComment /\/\/.*$/
+
+syntax match soyTemplate /\s\+\.\w\+/ contained
 
 highlight def link soyKeyword Statement
 highlight def link soyDirective Type
 highlight def link soyIdentifier Identifier
 highlight def link soyString String
 highlight def link soyComment Comment
+highlight def link soyTemplate Function
