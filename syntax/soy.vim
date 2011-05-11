@@ -1,3 +1,17 @@
+" Google Closure templates synatx file.
+" Language: Soy
+" Maintainer: Dugan Chen (https://github.com/duganchen)
+"
+if exists("b:current_syntax")
+	finish
+endif
+
+if version < 600
+  syntax clear
+elseif exists("b:current_syntax")
+  finish
+endif
+
 syntax clear
 syntax case match
 
@@ -46,8 +60,8 @@ syntax match soyIdentifier /\$\w\+/
 syntax region soyComment start=/\/\*/ end='\\*\/'
 syntax match soyComment /\/\/.*$/
 
-highlight link soyKeyword Statement
-highlight link soyDirective Type
-highlight link soyIdentifier Identifier
-highlight link soyString String
-highlight link soyComment Comment
+highlight def link soyKeyword Statement
+highlight def link soyDirective Type
+highlight def link soyIdentifier Identifier
+highlight def link soyString String
+highlight def link soyComment Comment
