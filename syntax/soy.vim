@@ -15,6 +15,15 @@ endif
 syntax clear
 syntax case match
 
+syntax keyword soyConstant contained null
+syntax keyword soyConstant contained false
+syntax keyword soyConstant contained true
+
+syntax keyword soyKeyword contained namespace
+syntax keyword soyKeyword contained template
+syntax keyword soyKeyword contained literal
+syntax keyword soyKeyword contained print
+
 syntax keyword soyKeyword contained namespace
 syntax keyword soyKeyword contained template
 syntax keyword soyKeyword contained literal
@@ -34,11 +43,12 @@ syntax keyword soyKeyword contained range
 syntax keyword soyKeyword contained call
 syntax keyword soyKeyword contained param
 syntax keyword soyKeyword contained nil
-syntax keyword soyKeyword contained r
-syntax keyword soyKeyword contained n
-syntax keyword soyKeyword contained t
-syntax keyword soyKeyword contained lb
-syntax keyword soyKeyword contained rb
+
+syntax keyword soyCharacter contained r
+syntax keyword soyCharacter contained n
+syntax keyword soyCharacter contained t
+syntax keyword soyCharacter contained lb
+syntax keyword soyCharacter contained rb
 
 syntax keyword soyDirective contained private
 syntax keyword soyDirective contained autoescape
@@ -52,8 +62,9 @@ syntax keyword soyDirective contained desc
 syntax keyword soyDirective contained meaning
 syntax keyword soyDirective contained data
 
-syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString, soyTemplate
-syntax region soyString contained start="\"" end="\""
+syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString, soyTemplate, soyNumber, soyConstant, soyHex, soyCharacter
+
+syntax region soyString contained start="\'" end="\'"
 
 syntax match soyIdentifier /\$[a-zA-Z0-9._]*\>/ contained
 
@@ -61,6 +72,9 @@ syntax region soyComment start=/\/\*/ end='\\*\/'
 syntax match soyComment /\/\/.*$/
 
 syntax match soyTemplate /\s\+\.\w\+/ contained
+1
+syntax match soyNumber /\-\?\d\+/ contained
+syntax match soyHex /\-\?0x[A-F0-9]\+/ contained
 
 highlight def link soyKeyword Statement
 highlight def link soyDirective Type
@@ -68,3 +82,7 @@ highlight def link soyIdentifier Identifier
 highlight def link soyString String
 highlight def link soyComment Comment
 highlight def link soyTemplate Function
+highlight def link soyNumber Number
+highlight def link soyHex Number
+highlight def link soyConstant Constant
+highlight def link soyCharacter Character
