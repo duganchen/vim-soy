@@ -67,14 +67,11 @@ syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, so
 syntax region soyString contained start="\'" end="\'"
 
 syntax match soyIdentifier /\$[a-zA-Z0-9._]*\>/ contained
-
 syntax region soyComment start=/\/\*/ end='\\*\/'
 syntax match soyComment /\/\/.*$/
-
-syntax match soyTemplate /\s\+\.\w\+/ contained
-1
-syntax match soyNumber /\-\?\d\+/ contained
-syntax match soyHex /\-\?0x[A-F0-9]\+/ contained
+syntax match soyTemplate /\s\+\.\w\+\>/ contained
+syntax match soyNumber /\-\?\d\+\(e\-\?\d\+\)\?\>/ contained
+syntax match soyHex /\-\?0x[A-F0-9]\+\>/ contained
 
 highlight def link soyKeyword Statement
 highlight def link soyDirective Type
