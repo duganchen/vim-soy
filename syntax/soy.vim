@@ -1,4 +1,4 @@
-" Google Closure templates synatx file.
+" Google Closure templates syntax file.
 " Language: Soy
 " Maintainer: Dugan Chen (https://github.com/duganchen)
 "
@@ -19,30 +19,45 @@ syntax keyword soyConstant contained null
 syntax keyword soyConstant contained false
 syntax keyword soyConstant contained true
 
-syntax keyword soyKeyword contained namespace
-syntax keyword soyKeyword contained template
-syntax keyword soyKeyword contained literal
-syntax keyword soyKeyword contained print
+syntax keyword soyFunction contained isFirst
+syntax keyword soyFunction contained isLast
+syntax keyword soyFunction contained index
+syntax keyword soyFunction contained hasData
+syntax keyword soyFunction contained length
+syntax keyword soyFunction contained round
+syntax keyword soyFunction contained floor
+syntax keyword soyFunction contained ceiling
+syntax keyword soyFunction contained min
+syntax keyword soyFunction contained max
+syntax keyword soyFunction contained randomInt
 
 syntax keyword soyKeyword contained namespace
 syntax keyword soyKeyword contained template
 syntax keyword soyKeyword contained literal
 syntax keyword soyKeyword contained print
+
+syntax keyword soyStatement contained namespace
+syntax keyword soyStatement contained template
+
+syntax keyword soyKeyword contained literal
+syntax keyword soyKeyword contained print
 syntax keyword soyKeyword contained msg
-syntax keyword soyKeyword contained if
-syntax keyword soyKeyword contained elseif
-syntax keyword soyKeyword contained else
-syntax keyword soyKeyword contained switch
-syntax keyword soyKeyword contained case
-syntax keyword soyKeyword contained default
-syntax keyword soyKeyword contained foreach
-syntax keyword soyKeyword contained ifempty
-syntax keyword soyKeyword contained for
-syntax keyword soyKeyword contained in
-syntax keyword soyKeyword contained range
 syntax keyword soyKeyword contained call
 syntax keyword soyKeyword contained param
 syntax keyword soyKeyword contained nil
+
+syntax keyword soyConditional contained if
+syntax keyword soyConditional contained elseif
+syntax keyword soyConditional contained else
+syntax keyword soyConditional contained switch
+syntax keyword soyConditional contained case
+syntax keyword soyConditional contained default
+syntax keyword soyConditional contained ifempty
+
+syntax keyword soyRepeat contained foreach
+syntax keyword soyRepeat contained for
+syntax keyword soyRepeat contained in
+syntax keyword soyRepeat contained range
 
 syntax keyword soyCharacter contained r
 syntax keyword soyCharacter contained n
@@ -62,13 +77,15 @@ syntax keyword soyDirective contained desc
 syntax keyword soyDirective contained meaning
 syntax keyword soyDirective contained data
 
-syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString, soyTemplate, soyConstant, soyInteger, soyCharacter, soyFloat, soySci, soyOperator
+syntax match soySpecialComment "@param" contained
+
+syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString, soyTemplate, soyConstant, soyInteger, soyCharacter, soyFloat, soySci, soyOperator, soyFunction, soyRepeat, soyConditional, soyStatement, soySpecialComment
 
 syntax region soyString contained start="\'" end="\'"
 
--
 syntax match soyIdentifier /\$[a-zA-Z0-9._]*\>/ contained
-syntax region soyComment start=/\/\*/ end='\\*\/'
+syntax region soyComment start=/\/\*/ end='\\*\/' contains=soySpecialComment
+
 syntax match soyComment /\/\/.*$/
 syntax match soyTemplate /\s\+\.\w\+\>/ contained
 
@@ -90,9 +107,14 @@ highlight def link soyDirective Type
 highlight def link soyIdentifier Identifier
 highlight def link soyString String
 highlight def link soyComment Comment
-highlight def link soyTemplate Function
+highlight def link soyTemplate Identifier
 highlight def link soyInteger Number
 highlight def link soyFloat Float
 highlight def link soySci Float
 highlight def link soyConstant Constant
 highlight def link soyCharacter Character
+highlight def link soyFunction Function
+highlight def link soyRepeat Repeat
+highlight def link soyConditional Conditional
+highlight def link soyStatement Statement
+highlight def link soySpecialComment SpecialComment
