@@ -62,10 +62,11 @@ syntax keyword soyDirective contained desc
 syntax keyword soyDirective contained meaning
 syntax keyword soyDirective contained data
 
-syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString, soyTemplate, soyConstant, soyInteger, soyCharacter, soyFloat, soySci
+syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString, soyTemplate, soyConstant, soyInteger, soyCharacter, soyFloat, soySci, soyOperator
 
 syntax region soyString contained start="\'" end="\'"
 
+-
 syntax match soyIdentifier /\$[a-zA-Z0-9._]*\>/ contained
 syntax region soyComment start=/\/\*/ end='\\*\/'
 syntax match soyComment /\/\/.*$/
@@ -78,7 +79,12 @@ syntax match soyNumber /\-\?\d\+\(e\-\?\d\+\)\?\>/ contained
 syntax match soyFloat /\-\?\d\+\.\d\+\>/ contained
 syntax match soySci /\-\?\d\+e\-\?\d\+\>/ contained
 
+syntax match soyOperator /\<\(not\|and\|or\)\>/ contained
 
+" Yes, this causes the - in -1 to show as an operator. This is a bug.
+syntax match soyOperator /[-*/%+<>=!?:]/ contained
+
+highlight def link soyOperator Operator
 highlight def link soyKeyword Statement
 highlight def link soyDirective Type
 highlight def link soyIdentifier Identifier
