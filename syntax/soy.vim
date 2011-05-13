@@ -30,6 +30,18 @@ syntax keyword soyFunction contained ceiling
 syntax keyword soyFunction contained min
 syntax keyword soyFunction contained max
 syntax keyword soyFunction contained randomInt
+syntax keyword soyFunction contained bidiGlobalDir
+syntax keyword soyFunction contained bidiDirAttr
+syntax keyword soyFunction contained bidiMark
+syntax keyword soyFunction contained bidiMarkAfter
+syntax keyword soyFunction contained bidiStartEdge
+syntax keyword soyFunction contained bidiEndEdge
+syntax keyword soyFunction contained bidiTextDir
+
+syntax keyword soyKeyword contained namespace
+syntax keyword soyKeyword contained template
+syntax keyword soyKeyword contained literal
+syntax keyword soyKeyword contained print
 
 syntax keyword soyKeyword contained namespace
 syntax keyword soyKeyword contained template
@@ -76,12 +88,15 @@ syntax keyword soyDirective contained insertWordBreaks
 syntax keyword soyDirective contained desc
 syntax keyword soyDirective contained meaning
 syntax keyword soyDirective contained data
+syntax keyword soyDirective contained bidiSpanWrap
+syntax keyword soyDirective contained bidiUnicodeWrap
 
-syntax match soySpecialComment "@param" contained
+syntax match soySpecialComment /@param?\?/ contained
 
-syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString, soyTemplate, soyConstant, soyInteger, soyCharacter, soyFloat, soySci, soyOperator, soyFunction, soyRepeat, soyConditional, soyStatement, soySpecialComment
+syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString, soyTemplate, soyConstant, soyInteger, soyCharacter, soyFloat, soySci, soyOperator, soyFunction, soyRepeat, soyConditional, soyStatement, soyLabel
 
 syntax region soyString contained start="\'" end="\'"
+syntax region soyString contained start="\"" end="\""
 
 syntax match soyIdentifier /\$[a-zA-Z0-9._]*\>/ contained
 syntax region soyComment start=/\/\*/ end='\\*\/' contains=soySpecialComment
@@ -97,6 +112,8 @@ syntax match soyFloat /\-\?\d\+\.\d\+\>/ contained
 syntax match soySci /\-\?\d\+e\-\?\d\+\>/ contained
 
 syntax match soyOperator /\<\(not\|and\|or\)\>/ contained
+
+syntax match soyLabel /\<\w\+:/ contained
 
 " Yes, this causes the - in -1 to show as an operator. This is a bug.
 syntax match soyOperator /[-*/%+<>=!?:]/ contained
@@ -118,3 +135,4 @@ highlight def link soyRepeat Repeat
 highlight def link soyConditional Conditional
 highlight def link soyStatement Statement
 highlight def link soySpecialComment SpecialComment
+highlight def link soyLabel Identifier
