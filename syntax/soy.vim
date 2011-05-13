@@ -62,7 +62,7 @@ syntax keyword soyDirective contained desc
 syntax keyword soyDirective contained meaning
 syntax keyword soyDirective contained data
 
-syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString, soyTemplate, soyNumber, soyConstant, soyHex, soyCharacter
+syntax region soyCommand start="{" end="}" contains=soyKeyword, soyDirective, soyIdentifier, soyString, soyTemplate, soyNumber, soyConstant, soyHex, soyCharacter, soyFloat
 
 syntax region soyString contained start="\'" end="\'"
 
@@ -70,7 +70,11 @@ syntax match soyIdentifier /\$[a-zA-Z0-9._]*\>/ contained
 syntax region soyComment start=/\/\*/ end='\\*\/'
 syntax match soyComment /\/\/.*$/
 syntax match soyTemplate /\s\+\.\w\+\>/ contained
+
+" integers and scientific notation
 syntax match soyNumber /\-\?\d\+\(e\-\?\d\+\)\?\>/ contained
+
+syntax match soyFloat /\-\?\d\+\(\.\d\+\)\?/
 syntax match soyHex /\-\?0x[A-F0-9]\+\>/ contained
 
 highlight def link soyKeyword Statement
@@ -81,5 +85,6 @@ highlight def link soyComment Comment
 highlight def link soyTemplate Function
 highlight def link soyNumber Number
 highlight def link soyHex Number
+highlight def link soyFloat Number
 highlight def link soyConstant Constant
 highlight def link soyCharacter Character
