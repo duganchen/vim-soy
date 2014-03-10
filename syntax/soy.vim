@@ -38,23 +38,16 @@ syntax keyword soyFunction contained bidiStartEdge
 syntax keyword soyFunction contained bidiEndEdge
 syntax keyword soyFunction contained bidiTextDir
 
-syntax keyword soyKeyword contained namespace
-syntax keyword soyKeyword contained template
-syntax keyword soyKeyword contained literal
-syntax keyword soyKeyword contained print
-
-syntax keyword soyKeyword contained namespace
-syntax keyword soyKeyword contained template
-syntax keyword soyKeyword contained literal
-syntax keyword soyKeyword contained print
-
 syntax keyword soyStatement contained namespace
 syntax keyword soyStatement contained template
+syntax keyword soyStatement contained delpackage
+syntax keyword soyStatement contained deltemplate
 
 syntax keyword soyKeyword contained literal
 syntax keyword soyKeyword contained print
 syntax keyword soyKeyword contained msg
 syntax keyword soyKeyword contained call
+syntax keyword soyKeyword contained delcall
 syntax keyword soyKeyword contained param
 syntax keyword soyKeyword contained nil
 
