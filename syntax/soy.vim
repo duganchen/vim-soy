@@ -47,6 +47,7 @@ syntax keyword soyKeyword contained literal
 syntax keyword soyKeyword contained print
 syntax keyword soyKeyword contained msg
 syntax keyword soyKeyword contained call
+syntax keyword soyKeyword contained delcall
 syntax keyword soyKeyword contained param
 syntax keyword soyKeyword contained nil
 
