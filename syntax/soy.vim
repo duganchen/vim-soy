@@ -49,7 +49,8 @@ syntax keyword soyKeyword contained msg
 syntax keyword soyKeyword contained call
 syntax keyword soyKeyword contained delcall
 syntax keyword soyKeyword contained param
-syntax keyword soyKeyword contained nil
+syntax keyword soyKeyword contained let
+syntax keyword soyKeyword contained css
 
 syntax keyword soyConditional contained if
 syntax keyword soyConditional contained elseif
@@ -64,6 +65,8 @@ syntax keyword soyRepeat contained for
 syntax keyword soyRepeat contained in
 syntax keyword soyRepeat contained range
 
+syntax keyword soyCharacter contained sp
+syntax keyword soyCharacter contained nil
 syntax keyword soyCharacter contained r
 syntax keyword soyCharacter contained n
 syntax keyword soyCharacter contained t
@@ -74,13 +77,24 @@ syntax keyword soyDirective contained private
 syntax keyword soyDirective contained autoescape
 syntax keyword soyDirective contained noAutoescape
 syntax keyword soyDirective contained id
+syntax keyword soyDirective contained escapeCssString
 syntax keyword soyDirective contained escapeHtml
+syntax keyword soyDirective contained escapeHtmlRcdata
+syntax keyword soyDirective contained escapeHtmlAttribute
+syntax keyword soyDirective contained escapeHtmlAttributeNospace
 syntax keyword soyDirective contained escapeUri
 syntax keyword soyDirective contained escapeJs
+syntax keyword soyDirective contained escapeJsRegex
+syntax keyword soyDirective contained escapeJsString
+syntax keyword soyDirective contained escapeJsValue
+syntax keyword soyDirective contained truncate
 syntax keyword soyDirective contained insertWordBreaks
+syntax keyword soyDirective contained changeNewlineToBr
 syntax keyword soyDirective contained desc
 syntax keyword soyDirective contained meaning
 syntax keyword soyDirective contained data
+syntax keyword soyDirective contained kind
+syntax keyword soyDirective contained variant
 syntax keyword soyDirective contained bidiSpanWrap
 syntax keyword soyDirective contained bidiUnicodeWrap
 
